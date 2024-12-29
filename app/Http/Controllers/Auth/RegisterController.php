@@ -7,6 +7,9 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Spatie\WelcomeNotification\WelcomesNewUsers;
+use App\Notifications\TwoFactor\SendTwoFactorCode;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -64,11 +67,24 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user =  User::create([
             'username' => $data['username'],
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        $expiresAt = now()->addDay();
+        $user->sendWelcomeNotification($expiresAt);
+
+        return $user;
     }
+
+    protected function registered(Request $request, $user)
+    {
+        $user->generateTwoFactorCode();
+        $user->notify(new SendTwoFactorCode());
+        return redirect()->route('profile.verify.index');
+    }
+
 }

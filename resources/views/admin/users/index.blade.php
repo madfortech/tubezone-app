@@ -23,11 +23,11 @@
                     </a> 
                 </div>
                 <div class="col-md-6">
-                    <div class="text-md-end" id="dataTable_filter">
+                    <!-- <div class="text-md-end" id="dataTable_filter">
                         <label class="form-label">
                             <input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search">
                         </label>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="row">
@@ -47,7 +47,7 @@
                                                 <th scope="col"> {{ trans('cruds.user.fields.role') }}</th>
                                                 <th scope="col"> {{ trans('cruds.user.fields.created_at') }}</th>
                                                 <th scope="col"> {{ trans('cruds.user.fields.updated_at') }}</th>
-                                                <th scope="col">{{trans('cruds.user.fields.editUser')}}</th>
+                                                <!-- <th scope="col">{{trans('cruds.user.fields.editUser')}}</th> -->
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -70,12 +70,7 @@
 
                                                     <td>   {{ $user->created_at ?? '' }}</td>
                                                     <td>   {{ $user->updated_at ?? '' }}</td>
-                                                    <td>
-                                                        <a class="btn btn-primary rounded-0" href="{{ route('admin.user.edit',$user->id) }}" role="button">
-                                                            
-                                                            {{ trans('cruds.user.fields.editUser') }}
-                                                        </a> 
-                                                    </td>
+                                                     
                                                 </tr>
                                             @endforeach
                                         </tbody>
@@ -86,13 +81,13 @@
                             {{-- Pagination --}}
                             <div class="row">
                                 <div class="col-md-6">
-                                    <nav class="d-lg-flex justify-content-lg-start">
+                                    <!-- <nav class="d-lg-flex justify-content-lg-start">
                                         <ul class="pagination">
                                             <li class="page-item disabled"><a class="page-link" aria-label="Previous" href="#"><span aria-hidden="true">«</span></a></li>
                                         
                                             <li class="page-item"><a class="page-link" aria-label="Next" href="#"><span aria-hidden="true">»</span></a></li>
                                         </ul>
-                                    </nav>
+                                    </nav> -->
                                 </div>
                             </div>
                             {{-- Pagination --}}

@@ -16,7 +16,8 @@
                     <h4 class="text-capitalize">{{('add new content')}}</h4>
                 </div>
                 <div class="mb-3">
-                    <livewire:create-post />
+                
+                    <livewire:posts.create-post />
 
                 </div>
             </div>

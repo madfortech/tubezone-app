@@ -24,16 +24,16 @@
                                         {{('Videos')}}
                                     </a>
                                 </li>
-                                <li class="nav-item" role="presentation">
+                                <!-- <li class="nav-item" role="presentation">
                                     <a class="nav-link" role="tab" data-bs-toggle="tab" href="#tab-2">
                                         {{('Shorts')}}
                                     </a>
-                                </li>
-                                <li class="nav-item" role="presentation">
+                                </li> -->
+                                <!-- <li class="nav-item" role="presentation">
                                     <a class="nav-link" role="tab" data-bs-toggle="tab" href="#tab-3">
                                         {{('Live')}}
                                     </a>
-                                </li>
+                                </li> -->
                                 <li class="nav-item" role="presentation">
                                     <a class="nav-link" role="modal"  data-bs-toggle="modal" data-bs-target="#editCustomizationModal" href="#tab-4">
                                         {{('Customization')}}
@@ -45,12 +45,12 @@
                                 <div class="tab-pane active" role="tabpanel" id="tab-1">
                                     @include('frontend.videos')    
                                 </div>
-                                <div class="tab-pane" role="tabpanel" id="tab-2">
+                                <!-- <div class="tab-pane" role="tabpanel" id="tab-2">
                                     @include('frontend.shorts')    
                                 </div>
                                 <div class="tab-pane" role="tabpanel" id="tab-3">
                                     @include('frontend.live') 
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>

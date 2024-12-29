@@ -54,5 +54,7 @@
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
     <script src="{{asset('js/script.min.js')}}"></script>
     <script src="{{asset('js/chart.min.min.js')}}"></script>
+
+    
 </body>
 </html>

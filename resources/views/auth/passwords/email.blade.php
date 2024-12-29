@@ -57,11 +57,11 @@
 
                 <div class="p-1 d-flex justify-content-end mt-2">
                     <div>
-                        <a class="text-decoration-none mx-2" href="#">
+                        <a class="text-decoration-none mx-2" href="{{route('terms')}}">
                         Terms
                         </a>
-                        <a class="text-decoration-none" href="#">Privacy</a>
-                        <a class="text-decoration-none mx-1" href="#">Help</a>
+                        <a class="text-decoration-none" href="{{route('privacy')}}">Privacy</a>
+                        <a class="text-decoration-none mx-1" href=" {{route('display-article')}}">Help</a>
                     </div>
                 </div>
             </div>

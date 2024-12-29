@@ -20,8 +20,13 @@
                         <a href="{{route('profile.password.edit')}}" class="list-group-item list-group-item-action mb-2">
                             {{('Password change')}}
                         </a>
+
+                        <a href="{{route('user.email-update.index')}}" class="mt-3 list-group-item list-group-item-action mb-2">
+                            {{('Update email')}}
+                        </a>
  
                     </div>
+                    
                 </div>
             </div>
         </div>

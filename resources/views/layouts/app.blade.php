@@ -35,8 +35,9 @@
         border: 2px solid;
         border-color: #bea6ff;
        }                   
-        
+       
     </style>
+      
 </head>
 <body style="background: rgb(255, 255, 255);">
     <div id="app">

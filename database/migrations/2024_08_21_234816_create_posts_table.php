@@ -15,13 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug')->unique()->nullable();
-            $table->mediumText('description');
-            $table->enum('visibility', ['public', 'private'])->default('public');
-            $table->enum('audience', ['for_kids', 'not_for_kids']);
+            $table->mediumText('description')->nullable();
+            $table->enum('audience', ['for_kids', 'not_for_kids'])->nullable();
             $table->string('restrictions')->nullable();
             $table->integer('views')->default(0);
             $table->timestamps();
-
             $table->foreignId('user_id')->constrained()->references('id')->on('users');
             $table->foreignId('category_id')->nullable()->constrained()->references('id')->on('categories');
         });

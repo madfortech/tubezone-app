@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class ChangeProfileController extends Controller
 {
 
-    public function edut()
+    public function edit()
     {
         $user = auth()->user();
         return view('pop-up.profile.customization', compact('user'));
@@ -18,6 +18,12 @@ class ChangeProfileController extends Controller
     public function update(UpdateProfileRequest $request)
     {
         $user = auth()->user();
+
+          // Upload profile picture
+        if ($request->hasFile('avatar')) {
+            $user->addMedia($request->file('avatar'))
+                ->toMediaCollection('avatars');
+        }
 
         $user->update($request->validated());
 

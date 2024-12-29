@@ -21,9 +21,7 @@
                             <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">
                               Edit  profile
                             </button>
-                            <button class="nav-link" id="v-pills-permissions-tab" data-bs-toggle="pill" data-bs-target="#v-pills-permissions" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">
-                              Permissions
-                            </button>
+                           
                             <button class="nav-link" id="v-pills-agreements-tab" data-bs-toggle="pill" data-bs-target="#v-pills-agreements" type="button" role="tab" aria-controls="v-pills-disabled" aria-selected="false">
                               Agreements
                             </button>
@@ -34,11 +32,6 @@
                               @include('pop-up.profile.edit-profile')
                             </div>
                             {{-- Edit profile --}}
-
-                            <div class="tab-pane fade" id="v-pills-permissions" role="tabpanel" aria-labelledby="v-pills-permissions-tab" tabindex="0">
-                              @include('pop-up.profile.invite-user')
-                            </div>
-                            {{-- Permissions --}}
 
                             <div class="tab-pane fade" id="v-pills-agreements" role="tabpanel" aria-labelledby="v-pills-agreements-tab" tabindex="0">
                               @include('pop-up.profile.agreements')

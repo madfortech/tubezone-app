@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -15,9 +16,12 @@ class UserFactory extends Factory
      *
      * @return array<string, mixed>
      */
+    protected $model = User::class;
+
     public function definition(): array
     {
         return [
+            'username' => $this->faker->unique()->userName, // Add this line
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
@@ -25,6 +29,8 @@ class UserFactory extends Factory
             'remember_token' => Str::random(10),
         ];
     }
+
+    
 
     /**
      * Indicate that the model's email address should be unverified.

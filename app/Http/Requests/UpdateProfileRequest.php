@@ -24,6 +24,7 @@ class UpdateProfileRequest extends FormRequest
         return [
             'name'  => ['required', 'string', 'max:255'],
             'username'  => ['required', 'string', 'max:255'],
+            'avatar' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             //'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . auth()->id()],
         ];
     }

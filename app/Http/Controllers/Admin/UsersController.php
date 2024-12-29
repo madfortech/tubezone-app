@@ -45,32 +45,32 @@ class UsersController extends Controller
 
     public function edit($id)
     {
-        $user = User::find($id);
-        $roles = Role::pluck('name','name')->all();
-        $userRole = $user->roles->pluck('name','name')->all();
+        // $user = User::find($id);
+        // $roles = Role::pluck('name','name')->all();
+        // $userRole = $user->roles->pluck('name','name')->all();
     
-        return view('admin.users.edit',compact('user','roles','userRole'));
+        // return view('admin.users.edit',compact('user','roles','userRole'));
     }
 
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required|email|unique:users,email,'.$id,
+        // $this->validate($request, [
+        //     'name' => 'required',
+        //     'email' => 'required|email|unique:users,email,'.$id,
            
-            'roles' => 'required'
-        ]);
+        //     'roles' => 'required'
+        // ]);
     
-        $input = $request->all();
+        // $input = $request->all();
         
     
-        $user = User::find($id);
-        $user->update($input);
-        DB::table('model_has_roles')->where('model_id',$id)->delete();
+        // $user = User::find($id);
+        // $user->update($input);
+        // DB::table('model_has_roles')->where('model_id',$id)->delete();
     
-        $user->assignRole($request->input('roles'));
+        // $user->assignRole($request->input('roles'));
     
-        return redirect()->route('admin.user.index')
-            ->with('success','User updated successfully');
+        // return redirect()->route('admin.user.index')
+        //     ->with('success','User updated successfully');
     }
 }

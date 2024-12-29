@@ -1,13 +1,14 @@
  <!-- Start: Navbar With Button -->
  <nav class="navbar navbar-expand-md fixed-top bg-body py-3">
     <div class="container">
-        <a class="navbar-brand d-flex align-items-center" href="#">
+        
+        <a class="navbar-brand d-flex align-items-center" href="{{('/')}}">
             <span class="bs-icon-sm bs-icon-rounded bs-icon-primary d-flex justify-content-center align-items-center me-2 bs-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-camera-video-fill">
                     <path fill-rule="evenodd" d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2z"></path>
                 </svg>
             </span>
-            <span>   {{ config('app.name', 'Laravel') }}</span>
+            <span>   {{ config('app.name', 'letsplays') }}</span>
         </a>
         <button data-bs-toggle="collapse" class="navbar-toggler border-0 rounded-0" data-bs-target="#navcol-1">
             <span class="visually-hidden">Toggle navigation</span>
@@ -18,22 +19,9 @@
               {{-- Left link here --}}
             </ul>
 
-            <form>
-                <div class="row row-cols-lg-auto g-3">
-                    <div class="col-12">
-                        <div class="input-group">
-                            <input class="form-control form-control-sm" type="search" id="inlineFormInputGroupSearch" required="" name="search" placeholder="Search">
-                            <div class="input-group-text">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-search">
-                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"></path>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
+                <!-- Search form here -->
+                <livewire:search.search />
 
-          
                 <ul class="navbar-nav ms-auto">
 
                     {{--  Setting--}}
@@ -57,7 +45,7 @@
                 @auth
                     @if (Route::has('login'))
                         {{--  Bell --}}
-                        <li class="nav-item dropdown">
+                        <!-- <li class="nav-item dropdown">
                             <a class="nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-bell-slash-fill">
                                     <path d="M5.164 14H15c-1.5-1-2-5.902-2-7 0-.264-.02-.523-.06-.776zm6.288-10.617A4.988 4.988 0 0 0 8.995 2.1a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 7c0 .898-.335 4.342-1.278 6.113l9.73-9.73M10 15a2 2 0 1 1-4 0zm-9.375.625a.53.53 0 0 0 .75.75l14.75-14.75a.53.53 0 0 0-.75-.75z"></path>
@@ -68,7 +56,7 @@
                                 <a class="dropdown-item" href="#">Second Item</a>
                                 <a class="dropdown-item" href="#">Third Item</a>
                             </div>
-                        </li>
+                        </li> -->
                         {{--  Bell --}}
 
                         {{-- Video --}}
@@ -81,18 +69,13 @@
                                 </svg>&nbsp;
                             </a>
                             <div class="dropdown-menu shadow-sm">
-                                <a class="dropdown-item" href="{{route('user.posts.create')}}">
+                                <a class="dropdown-item" href="{{route('posts.create')}}">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-camera-video-fill">
                                         <path fill-rule="evenodd" d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2z"></path>
                                     </svg>&nbsp;Upload video
                                 </a>
                            
-
-                                <a class="dropdown-item" href="#">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-broadcast">
-                                        <path d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707m2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 1 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708m5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708m2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707zM10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0"></path>
-                                    </svg>&nbsp;Go live
-                                </a>
+ 
                             </div>
                         </li>
                         {{-- Video --}}
@@ -101,14 +84,16 @@
                     @endif
                     @else
 
-                  
-                    
+
                     <a class="btn btn-link rounded-pill border text-decoration-none" href="{{url('login')}}">
                         {{('Sign in')}}
                     </a>
                 @endauth
                    
                 </ul>
+                <!-- <span class="navbar-text bg-danger text-light px-2 rounded fw-semibold">
+                    Navbar text with an inline element
+                </span> -->
         </div>
     </div>
 </nav><!-- End: Navbar With Button -->

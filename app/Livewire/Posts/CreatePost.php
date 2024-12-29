@@ -31,7 +31,7 @@ class CreatePost extends Component
     #[Validate('required',message:'for kids,not for kids your visibility is required')] 
     public string $audience = 'for_kids';
 
-    #[Validate('nullable')] 
+    #[Validate('required')] 
     public string $restrictions;
 
     #[Validate('nullable')] 
@@ -42,11 +42,6 @@ class CreatePost extends Component
 
     public $categories;
 
-    public $visibilityOptions = [
-        'public' => 'Public',
-        'private' => 'Private',
-    ];
-
     public $audienceOptions = [
         'for_kids' => 'Kids',
         'not_for_kids' => 'Not for kids',
@@ -54,9 +49,11 @@ class CreatePost extends Component
     
     public string $slug = '';
 
+    
     public int $postId;
     public ?Post $post;
-
+    
+    
     public function updatedTitle($value): void
     {
         $this->slug = SlugService::createSlug(Post::class, 'slug', $this->title);
@@ -68,33 +65,49 @@ class CreatePost extends Component
         $this->categories = Category::all();
     }
 
-    public function save() 
+    public function save():void 
     {
-        $validated = $this->validate();
+        $this->validate([
+            'title' => 'required',
+            'video' => 'required|mimes:mp4,mp3,avi|max:10240', // video field ko validate karna hoga
+            'description' => 'required|max:255',
+            'audience' => 'required|in:for_kids,not_for_kids',
+            'category_id' => 'required|exists:categories,id',
+            'tags' => 'nullable',
+        ]);
         
         $user = auth()->user();
 
-        $post = $user->posts()->create([
-            'title' => $this->title,
-            'slug' => $this->slug,
-            'visibility' => $this->visibility,
-            'audience' => $this->audience,
-            'category_id' => $this->category_id,
-            'tags' => $this->tags,
-        ]);
-
-        if ($this->video) {
-            $post->addMedia($this->video->getRealPath())
-            ->toMediaCollection('videos');
+        if ($this->audience == 'for_kids') {
+            $this->audience = 'for_kids';
+        } else {
+            $this->audience = 'not_for_kids';
         }
 
+        $post = $user->posts()->create([
+            'title' => $this->title,
+            'description' => $this->description,
+            'slug' => $this->slug,
+            'audience' => $this->audience,
+            'category_id' => (int) $this->category_id,
+            'tags' => $this->tags,
+        ]);
+ 
+       
+        if (empty($this->post)) {
+            $post->addMedia($this->video->getRealPath())->toMediaCollection('videos');
+        } else {
+            $this->post->clearMediaCollection('videos');
+            $post->addMedia($this->video->getRealPath())->toMediaCollection('videos');
+        }
+ 
         session()->flash('status', 'Post successfully updated.');
 
-        return redirect()->to('/posts/create');
-         
+        $this->reset('title', 'description','audience','video','tags');
     }
-    
 
+    
+    
     public function render()
     {
         return view('livewire.posts.create-post', ['categories' => Category::all()]);

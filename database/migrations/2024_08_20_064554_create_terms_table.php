@@ -17,13 +17,13 @@ class CreateTermsTable extends Migration
         Schema::create('terms', function (Blueprint $table) {
             $table->unsignedBigInteger('id', true);
             $table->longText('terms')->nullable();
-              $table->longText('privacy')->nullable();
+            $table->longText('privacy')->nullable();
             $table->timestamps();
         });
 
-        Term::create([
-            'terms' => 'My first terms',
-        ]);
+        // Term::create([
+        //     'terms' => 'My first terms',
+        // ]);
     }
 
     /**
