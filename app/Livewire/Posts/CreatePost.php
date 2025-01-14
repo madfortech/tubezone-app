@@ -34,9 +34,9 @@ class CreatePost extends Component
     #[Validate('required')] 
     public string $restrictions;
 
-    #[Validate('nullable')] 
-    public string $tags;
-
+    #[Validate('nullable|regex:/^(#[a-zA-Z0-9_]+(?: #[a-zA-Z0-9_]+)*)?$/', message: 'Tags must start with # and be separated by spaces')]
+    public ?string $tags = null; // Initialize to null
+    
     #[Validate('required|exists:categories,id')] 
     public int $category_id;
 
@@ -47,6 +47,7 @@ class CreatePost extends Component
         'not_for_kids' => 'Not for kids',
     ];
     
+
     public string $slug = '';
 
     
@@ -73,7 +74,8 @@ class CreatePost extends Component
             'description' => 'required|max:255',
             'audience' => 'required|in:for_kids,not_for_kids',
             'category_id' => 'required|exists:categories,id',
-            'tags' => 'nullable',
+            'tags' => 'nullable|regex:/^(#[a-zA-Z0-9_]+(?: #[a-zA-Z0-9_]+)*)?$/', // Added regex here as well for server side validation
+
         ]);
         
         $user = auth()->user();

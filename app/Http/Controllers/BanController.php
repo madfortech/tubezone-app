@@ -20,15 +20,17 @@ class BanController extends Controller
     public function store(Request $request)
     {
         $post = Post::find($request->input('id'));
-
+        $currentUser = auth()->user();
+        if ($currentUser->id === $post->user->id) {
+            return back()->withErrors(['You cannot ban your own post.']); // Correct placement
+        }
+    
         $ban = new Ban();
         $ban->bannable()->associate($post);
         $ban->createdBy()->associate(auth()->user());
         $ban->comment = $request->input('comment');
-       
-
         $ban->save();
-
+       
         return redirect()->back();
 
     }

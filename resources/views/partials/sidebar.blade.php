@@ -113,7 +113,7 @@
                 </a>
                 <div class="dropdown-menu rounded-0">
                     @if(auth()->user()->hasRole('admin|manager'))
-                        <a class="dropdown-item" href="{{route('admin.reports.index')}}">{{('Add new')}}</a>
+                        
                         <a class="dropdown-item" href="{{route('admin.reports.index')}}">{{('view all')}}</a>
                     @endif
                 </div>

@@ -14,11 +14,9 @@ class CategorySeed extends Seeder
     public function run(): void
     {
         $categories = [
-            ['name' => 'Movies'],
-            ['name' => 'Animation'],
-            ['name' => 'Education'],
-            ['name' => 'Games'],
-            ['name' => 'Blog'],
+          
+            ['name' => 'Entertainment'],
+            
         ];
 
         foreach ($categories as $category) {

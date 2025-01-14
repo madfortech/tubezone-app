@@ -12,6 +12,7 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Cog\Contracts\Ban\Bannable as BannableInterface;
 use Cog\Laravel\Ban\Traits\Bannable;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Post extends Model implements HasMedia, BannableInterface
 {
@@ -89,5 +90,10 @@ class Post extends Model implements HasMedia, BannableInterface
     public function bans()
     {
         return $this->morphMany(Ban::class, 'bannable');
+    }
+
+    public function tags(): BelongsToMany
+    {
+        return $this->belongsToMany(Tag::class);
     }
 }

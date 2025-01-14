@@ -27,6 +27,7 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
     <!-- Scripts -->
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
     
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 

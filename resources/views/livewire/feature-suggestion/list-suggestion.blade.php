@@ -4,10 +4,30 @@
                                             <table class="table my-0">
                                                 <thead>
                                                     <tr>
-                                                        <th>{{('Id')}}</th>
-                                                        <th>{{('suggested_by')}}</th>
+                                                         
+                                                        <th data-bs-toggle="tooltip" data-bss-tooltip="" title="learn more">
+                                                            <br><br>
+                                                            <span style="color: rgb(96, 96, 96);">
+                                                                {{('Id')}}
+                                                            </span>
+                                                        </th>
 
-                                                        <th>{{('name')}}</th>
+
+                                                        <th data-bs-toggle="tooltip" data-bss-tooltip="" title="learn more">
+                                                            <br><br>
+                                                            <span style="color: rgb(96, 96, 96);">
+                                                                {{('suggested_by')}}
+                                                            </span>
+                                                        </th>
+     
+
+                                                        <th data-bs-toggle="tooltip" data-bss-tooltip="" title="learn more">
+                                                            <br><br>
+                                                            <span style="color: rgb(96, 96, 96);">
+                                                                {{('name')}}
+                                                            </span>
+                                                        </th>
+     
     
 
                                                         <th data-bs-toggle="tooltip" data-bss-tooltip="" title="learn more">

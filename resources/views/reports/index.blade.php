@@ -38,7 +38,6 @@
                                                 <th scope="col">  {{ ('expired_at') }}</th>
                                                 <th scope="col">  {{ ('created_at') }}</th>
                                                 <th scope="col">  {{ ('updated_at') }}</th>
-                                                <th scope="col">  {{ ('updated_at') }}</th>
                                             </tr>
                                         </thead>
                                         <tbody>

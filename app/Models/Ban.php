@@ -27,8 +27,8 @@ class Ban extends Model
 
  
     public const COMMENTS = [
-        'terms_of_service' => 'Violates letsplays Terms of Service',
-        'csam' => 'Child Sexual Abuse Material (CSAM)',
+        'terms_of_service' => 'Violates openroast Terms of Service',
+        'Child Sexual Abuse Material' => 'Child Sexual Abuse Material (CSAM)',
         'spam' => 'Report Spam',
         'abuse' => 'Report Abuse',
         
